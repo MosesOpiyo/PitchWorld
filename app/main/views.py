@@ -13,18 +13,9 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
+    pitches = Pitch.query.all
+    return render_template('index.html',pitches_list = pitches)
 
-    title = 'Welcome to PitchWorld'
-
-    # Getting reviews by category
-    interview_pitches = Pitch.get_pitches('interview')
-    product_pitches = Pitch.get_pitches('product')
-    promotion_pitches = Pitch.get_pitches('promotion')
-
-
-    return render_template('index.html',title = title, interview = interview_pitches, product = product_pitches, promotion = promotion_pitches)
-
-@main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
     pitches_count = Pitch.count_pitches(uname)

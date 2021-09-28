@@ -9,7 +9,7 @@ from app import login_manager
 
 @login_manager.user_loader
 def load_user(id):
-    return User.get(id)
+    return User.query.get(id)
 
 
 @auth.route('/register',methods = ["GET","POST"])
