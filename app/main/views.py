@@ -64,26 +64,26 @@ def new_pitch():
     title = 'New pitch'
     return render_template('new_pitch.html',title = title,pitch_form=pitch_form )
 
-@main.route('/pitches/interview_pitches')
+@main.route('/pitches/interview_pitches',methods=['GET','POST'])
 def interview_pitches():
-
+    form = CommentForm()
     pitches = Pitch.query.filter_by(category = 'interview')
 
-    return render_template("interview.html", pitches = pitches)
+    return render_template("interview.html", pitches = pitches,form = form)
 
-@main.route('/pitches/product_pitches')
+@main.route('/pitches/product_pitches',methods=['GET','POST'])
 def product_pitches():
-
+    form = CommentForm()
     pitches = Pitch.query.filter_by(category = 'product')
 
-    return render_template("product.html", pitches = pitches)
+    return render_template("product.html", pitches = pitches,form = form)
 
-@main.route('/pitches/promotion_pitches')
+@main.route('/pitches/promotion_pitches',methods=['GET','POST'])
 def promotion_pitches():
-
+    form  = CommentForm()
     pitches = Pitch.query.filter_by(category = 'promotion')
 
-    return render_template("promotion.html", pitches = pitches)
+    return render_template("promotion.html", pitches = pitches,form = form)
 
 @main.route('/pitch/<int:id>', methods = ['GET','POST'])
 def pitch(id):

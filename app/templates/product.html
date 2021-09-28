@@ -1,14 +1,45 @@
-{% extends 'base.html' %}{%block content%}
+{% extends 'base.html' %} {%block content%}
 <div class="jumbotron text-center" style=" color: #fff; padding: 100px 25px;">
-    <h1>Product Pitches</h1>
+    <h1>Promotion Pitches</h1>
 </div>
 <div class="container">
     <h1>Product Pitches</h1>
     <hr>
-    <div class="row">
+    <div>
         {% for pitch in pitches %}
-        <div class="card">
-            Title:{{pitch.pitch_title}} Body:{{pitch.pitch_content}} Posted:{{pitch.posted}}
+        <div class="row" style="margin-top: 10px;">
+            <div class="col">
+                <div>Title:{{pitch.pitch_title}}</div>
+                <div>Body:{{pitch.pitch_content}} </div>
+                <div>Posted:{{pitch.posted.strftime('%Y-%m-%d')}}</div>
+            </div>
+            <div class="col">
+                <div class="card" style="padding: 10px;">
+                    <form method="POST">
+                        {{ form.hidden_tag()}}
+                        <div class="mb-3">
+                            {{ form.text.label(class="form-label")}}{{form.text(class="form-control")}}
+                        </div>
+                        {{ form.submit(class="btn btn-secondary")}}
+                    </form>
+                </div>
+                <div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Comments
+                          </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance,
+                                as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>,
+                                though the transition does limit overflow.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         {% endfor %}
     </div>
