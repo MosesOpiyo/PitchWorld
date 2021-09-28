@@ -1,8 +1,13 @@
+
+
 ## PitchBook This is a web application that displays pitches from multiple users to a user.
+<img src="https://github.com/MosesOpiyo/PitchWorld/blob/master/app/static/Screenshot%20from%202021-09-28%2010-40-20.png?raw=true">
 App Description The application uses a database that stores all user input and according to queries that are passed in via the views.py file, filters the data and brings back only the specified data. This application shows different categories of news on the home page.
 
 ## Link to Hosted site
 Click the link below to have a look at the site.
+
+https://pitchworld2.herokuapp.com/
 
 ## Technologies Used
 Flask
@@ -46,10 +51,8 @@ For full functionality of the application install the following:
 29. Werkzeug==0.16.0
 30. WTForms==2.3.3
 31. zipp==3.5.0
-Future Improvements
-In the future I would like to implements a email message alerting the user of their signing up to the application and a better design for the application.
 
-licence MIT License
+## licence MIT License
 
 Copyright (c) [2021] [Moses Opiyo]
 
