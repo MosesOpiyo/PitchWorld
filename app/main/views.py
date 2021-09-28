@@ -98,16 +98,16 @@ def promotion_pitches():
 def pitch(id):
     pitch = Pitch.get_pitch(id)
 
-    if request.args.get("like"):
-        pitch.likes = pitch.likes + 1
+    if request.args.get("upvotes"):
+        pitch.upvotes = pitch.upvotes + 1
 
         db.session.add(pitch)
         db.session.commit()
 
         return redirect("/pitch/{pitch_id}".format(pitch_id=pitch.id))
 
-    elif request.args.get("dislike"):
-        pitch.dislikes = pitch.dislikes + 1
+    elif request.args.get("downvotes"):
+        pitch.downvotes = pitch.downvotes + 1
 
         db.session.add(pitch)
         db.session.commit()
@@ -126,6 +126,15 @@ def pitch(id):
     comments = Comment.get_comments(pitch)
 
     return render_template("pitch.html", pitch = pitch, comment_form = comment_form, comments = comments)
+
+@main.route('/user/<uname>/pitches')
+def user_pitches(uname):
+    user = User.query.filter_by(username=uname).first()
+    pitches = Pitch.query.filter_by(user_id = user.id).all()
+    pitches_count = Pitch.count_pitches(uname)
+    user_joined = user.date_joined.strftime('%b %d, %Y')
+
+    return render_template("profile/pitches.html", user=user,pitches=pitches,pitches_count=pitches_count,date = user_joined)
 
 
 
