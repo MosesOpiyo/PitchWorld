@@ -67,23 +67,23 @@ def new_pitch():
 @main.route('/pitches/interview_pitches')
 def interview_pitches():
 
-    pitches = Pitch.get_pitches('interview')
+    pitches = Pitch.query.filter_by(category = 'interview')
 
-    return render_template("interview_pitches.html", pitches = pitches)
+    return render_template("interview.html", pitches = pitches)
 
 @main.route('/pitches/product_pitches')
 def product_pitches():
 
-    pitches = Pitch.get_pitches('product')
+    pitches = Pitch.query.filter_by(category = 'product')
 
-    return render_template("product_pitches.html", pitches = pitches)
+    return render_template("product.html", pitches = pitches)
 
 @main.route('/pitches/promotion_pitches')
 def promotion_pitches():
 
-    pitches = Pitch.get_pitches('promotion')
+    pitches = Pitch.query.filter_by(category = 'promotion')
 
-    return render_template("promotion_pitches.html", pitches = pitches)
+    return render_template("promotion.html", pitches = pitches)
 
 @main.route('/pitch/<int:id>', methods = ['GET','POST'])
 def pitch(id):

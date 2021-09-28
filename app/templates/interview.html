@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% import 'macros.html' as macro %} {%block content%}
+{% extends 'base.html' %}{%block content%}
 <div class="jumbotron text-center" style="color: #fff; padding: 100px 25px;">
     <h1>Interview Pitches</h1>
 </div>
@@ -6,7 +6,13 @@
     <h1>Interview Pitches</h1>
     <hr>
     <div class="row">
-        {{macro.displayPitches(pitches)}}
+        <div class="row">
+            {% for pitch in pitches %}
+            <div class="card">
+                Title:{{pitch.pitch_title}} Body:{{pitch.pitch_content}} Posted:{{pitch.posted}}
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {%endblock%}
