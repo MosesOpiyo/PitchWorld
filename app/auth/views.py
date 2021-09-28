@@ -5,6 +5,11 @@ from ..models import User
 from .forms import LoginForm,RegistrationForm
 from .. import db
 from ..email import mail_message
+from app import login_manager
+
+@login_manager.user_loader
+def load_user(id):
+    return User.get(id)
 
 
 @auth.route('/register',methods = ["GET","POST"])
