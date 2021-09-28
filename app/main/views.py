@@ -55,7 +55,7 @@ def new_pitch():
         category = pitch_form.category.data
 
         # Updated pitch instance
-        new_pitch = Pitch(pitch_title=title,pitch_content=description,user=current_user)
+        new_pitch = Pitch(pitch_title=title,pitch_content=description,category = category,user=current_user)
 
         # Save pitch method
         new_pitch.save_pitch()

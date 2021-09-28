@@ -42,6 +42,7 @@ class Pitch(db.Model):
     pitch_content = db.Column(db.String(1000))
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    category = db.Column(db.String(200))
     upvotes = db.Column(db.Integer)
     downvotes = db.Column(db.Integer)
 
