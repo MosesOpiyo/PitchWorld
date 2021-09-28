@@ -1,0 +1,2 @@
+Hello {{user.username}}
+We have seen that you have just joined our world of pitches. We appreciate the effort and do make yourself at home.
